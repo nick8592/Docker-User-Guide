@@ -77,10 +77,6 @@ docker tag docker/welcome-to-docker YOUR-USERNAME/welcome-to-docker
 https://docs.docker.com/storage/bind-mounts/   
 windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/  
 ```
-<method 0> use -v
-docker run -it --name <container_name> -v <local_folder>:<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
-(e.g.) docker run -it --name test111 -v /c/Users/user/Desktop/mmlab/code/test:/main --gpus all -u 0 --shm-size 12G test bash
-
 <method 1> use -v
 docker run -it --name <container_name> -v <local_folder>:<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
 (e.g.) docker run -it --name test111 -v C:\Users\user\Desktop\mmlab\code\test:/main --gpus all -u 0 --shm-size 12G test bash
