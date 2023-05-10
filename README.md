@@ -1,20 +1,12 @@
 # Docker-User-Guide
 
-## Docker
+## Links
 [Installing Docker from the Default Repositories (Option 2)](https://phoenixnap.com/kb/install-docker-on-ubuntu-20-04)    
 [進入容器 - 《Docker —— 從入門到實踐》正體中文版](https://philipzheng.gitbook.io/docker_practice/)   
 [Docker 基本指令操作](https://ithelp.ithome.com.tw/articles/10186431)
 [Docker 實戰系列（一）：一步一步帶你 dockerize 你的應用](https://larrylu.blog/step-by-step-dockerize-your-app-ecd8940696f4)
 
-Windows search
-```
-cmd
-```
-Type in
-```
-wsl
-```
-## Docker
+## Basic
 Create new container
 ```
 (default)
@@ -37,7 +29,11 @@ Start container
 ```
 docker start -i [container id]
 ```
-## Example
+
+## Run
+https://docs.docker.com/engine/reference/commandline/run/
+
+## Easy Example
 Create `<workspace_folder>`   
 Put code in `<workspace_folder>`   
 Create new code called `Dockerfile`   
@@ -76,10 +72,8 @@ Push image
 ```
 docker tag docker/welcome-to-docker YOUR-USERNAME/welcome-to-docker
 ```
-### Docker Run
-https://docs.docker.com/engine/reference/commandline/run/
 
-### Container connet to local folder
+## Container connet to local folder
 https://docs.docker.com/storage/bind-mounts/   
 windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/  
 ```
