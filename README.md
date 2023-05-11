@@ -44,7 +44,7 @@ Create new code called `Dockerfile`
 └── main,py
 ```
 Base on you environment defined `Dockerfile` code   
-```
+```Dockerfile
 (For example)
 FROM python
 COPY main.py /main/
