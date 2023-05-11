@@ -85,3 +85,13 @@ docker run -it --name <container_name> -v <local_folder>:<container_folder> --gp
 docker run -it --name <container_name> --mount type=bind,source=<local_folder>,target=<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
 (e.g.) docker run -it --name mount_test --mount type=bind,source=C:\Users\user\Desktop\mmlab\code\test,target=/main --gpus all -u 0 --shm-size 12G test bash
 ```
+
+## Errors
+[docker环境里安装opencv ImportError: libGL.so.1: cannot open shared object file: No such file or directory](https://blog.csdn.net/Max_ZhangJF/article/details/108920050)
+```
+<error message>
+ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+<solution>
+pip uninstall opencv-python
+pip install opencv-python-headless
+```
