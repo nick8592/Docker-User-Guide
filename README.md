@@ -74,6 +74,7 @@ docker tag docker/welcome-to-docker YOUR-USERNAME/welcome-to-docker
 ```
 
 ## Container connet to local folder
+**DO NOT OPEN `WSL`** on windows terminal, it will cause error `docker: Error response from daemon`  
 https://docs.docker.com/storage/bind-mounts/   
 windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/  
 ```
