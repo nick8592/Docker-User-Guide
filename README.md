@@ -96,3 +96,14 @@ ImportError: libGL.so.1: cannot open shared object file: No such file or directo
 pip uninstall opencv-python
 pip install opencv-python-headless
 ```
+
+## For Apple Silicon
+[Docker command not found when running on Mac](https://stackoverflow.com/a/76097028).  
+Add your Docker binary path
+```
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+```
+Then reload the configuration & test with:
+```
+source ~/.bash_profile && docker --version
+```
