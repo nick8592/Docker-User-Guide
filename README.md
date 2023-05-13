@@ -1,5 +1,9 @@
 # Docker-User-Guide
 
+## Downloads
+[Docker for Windows / Linux](https://www.docker.com/)  
+[OrbStack for Mac](https://orbstack.dev/)   
+
 ## Links
 [Installing Docker from the Default Repositories (Option 2)](https://phoenixnap.com/kb/install-docker-on-ubuntu-20-04)    
 [進入容器 - 《Docker —— 從入門到實踐》正體中文版](https://philipzheng.gitbook.io/docker_practice/)   
@@ -81,7 +85,7 @@ windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/
 <method 1> use -v
 docker run -it --name <container_name> -v <local_folder>:<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
 (windows) docker run -it --name test111 -v C:\Users\user\Desktop\mmlab\code\test:/main --gpus all -u 0 --shm-size 12G test bash
-(mac) docker run -it --name kmeans -v ~/User/weichenpai/Code/Kmeans-Clustering:/Kmeans 3f5ef9003cef bash
+(linux/mac) docker run -it --name kmeans -v /User/weichenpai/Code/Kmeans-Clustering:/Kmeans 3f5ef9003cef bash
 
 <method 2> use --mount
 docker run -it --name <container_name> --mount type=bind,source=<local_folder>,target=<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
