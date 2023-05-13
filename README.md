@@ -131,7 +131,7 @@ Add `docker` path into PATHs file
 ```
 Use `:wq` save & exit, complete adding path.   
 
-[Fixing the ‘Mounts denied’ error in Docker for Mac v2.2.3](https://medium.com/effy-tech/fixing-the-var-folders-error-in-docker-for-mac-v2-2-3-2a40e776132d)
+[Fixing the ‘Mounts denied’ error in Docker for Mac v2.2.3](https://medium.com/effy-tech/fixing-the-var-folders-error-in-docker-for-mac-v2-2-3-2a40e776132d).  
 The solution is to manually edit the configuration file for your docker installation. 
 ```
 cd Library/Group\ Containers/group.com.docker/
