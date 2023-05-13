@@ -107,3 +107,25 @@ Then reload the configuration & test with:
 ```
 source ~/.bash_profile && docker --version
 ```
+[Mac zsh: command not found: docker](https://blog.csdn.net/qq_45296221/article/details/122191265).  
+Find `docker` command path, for example:
+```
+/Applications/Docker.app/Contents/Resources/bin
+```
+Edit PATHs file, use `i` insert
+```
+sudo vim /etc/paths
+```
+Add `docker` path into PATHs file
+```
+/usr/local/bin
+/System/Cryptexes/App/usr/bin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+
+# docker
+/Applications/Docker.app/Contents/Resources/bin
+```
+Use `:wq` save & exit, complete adding path.   
