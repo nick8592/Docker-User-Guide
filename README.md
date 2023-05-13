@@ -97,7 +97,7 @@ pip uninstall opencv-python
 pip install opencv-python-headless
 ```
 
-## For Apple Silicon
+## For MacOS
 [Docker command not found when running on Mac](https://stackoverflow.com/a/76097028).  
 Add your Docker binary path
 ```
