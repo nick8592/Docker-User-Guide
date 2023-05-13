@@ -80,11 +80,12 @@ windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/
 ```
 <method 1> use -v
 docker run -it --name <container_name> -v <local_folder>:<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
-(e.g.) docker run -it --name test111 -v C:\Users\user\Desktop\mmlab\code\test:/main --gpus all -u 0 --shm-size 12G test bash
+(windows) docker run -it --name test111 -v C:\Users\user\Desktop\mmlab\code\test:/main --gpus all -u 0 --shm-size 12G test bash
+(mac) docker run -it --name kmeans -v ~/User/weichenpai/Code/Kmeans-Clustering:/Kmeans 3f5ef9003cef bash
 
 <method 2> use --mount
 docker run -it --name <container_name> --mount type=bind,source=<local_folder>,target=<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
-(e.g.) docker run -it --name mount_test --mount type=bind,source=C:\Users\user\Desktop\mmlab\code\test,target=/main --gpus all -u 0 --shm-size 12G test bash
+(windows) docker run -it --name mount_test --mount type=bind,source=C:\Users\user\Desktop\mmlab\code\test,target=/main --gpus all -u 0 --shm-size 12G test bash
 ```
 
 ## Errors
@@ -129,3 +130,36 @@ Add `docker` path into PATHs file
 /Applications/Docker.app/Contents/Resources/bin
 ```
 Use `:wq` save & exit, complete adding path.   
+
+[Fixing the ‘Mounts denied’ error in Docker for Mac v2.2.3](https://medium.com/effy-tech/fixing-the-var-folders-error-in-docker-for-mac-v2-2-3-2a40e776132d)
+The solution is to manually edit the configuration file for your docker installation. 
+```
+cd Library/Group\ Containers/group.com.docker/
+```
+Edit `settings.json`
+```
+sudo vim settings.json
+```
+Find below section:   
+```
+"filesharingDirectories": [
+    "/Users",
+    "/Volumes",
+    "/private",
+    "/tmp",
+    "/var/folders"
+  ],
+```
+Add path you want to add, for exampple :`"/Users/<yours_username>/Code"`.  
+```
+"filesharingDirectories": [
+    "/Users",
+    "/Volumes",
+    "/private",
+    "/tmp",
+    "/var/folders",
+    "/Users/<yours_username>/Code"
+  ],
+```
+Save the file and exit, `:wq`. Now restart your Docker.   
+[File system sharing (osxfs)](https://docs.docker.com.zh.xy2401.com/v17.09/docker-for-mac/osxfs/#access-control)
