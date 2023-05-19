@@ -25,14 +25,15 @@ docker ps
 (list all containers)
 docker ps -a
 ```
-Remove container
-```
-docker rm [container id]
-```
 Start container
 ```
 docker start -i [container id]
 ```
+Remove container
+```
+docker rm [container id]
+```
+
 
 ## Run
 https://docs.docker.com/engine/reference/commandline/run/
