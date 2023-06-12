@@ -46,7 +46,7 @@ Create new code called `Dockerfile`
 <workspace_folder>
 ├── Dockerfile   <--   這裡
 ├── README.md
-└── main,py
+└── main.py
 ```
 Base on you environment defined `Dockerfile` code   
 ```Dockerfile
