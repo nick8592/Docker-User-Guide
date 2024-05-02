@@ -41,19 +41,6 @@ Verify that the Docker Engine installation is successful by running the hello-wo
 sudo docker run hello-world
 ```
 
-### Install Docker Desktop on Ubuntu
-For non-Gnome Desktop environments, gnome-terminal must be installed:
-```bash
-sudo apt install gnome-terminal
-```
-Download latest [DEB package](https://docs.docker.com/desktop/install/ubuntu/).
-Install the package with apt as follows:
-```bash
-sudo apt-get update
-sudo apt-get install ./docker-desktop-<version>-<arch>.deb
-```
-
-
 ### Installing the NVIDIA Container Toolkit
 #### Installing with Apt
 Configure the production repository:
@@ -71,7 +58,27 @@ Install the NVIDIA Container Toolkit packages:
 ```bash
 sudo apt-get install -y nvidia-container-toolkit
 ```
+Configure the container runtime by using the `nvidia-ctk` command:
+```bash
+sudo nvidia-ctk runtime configure --runtime=docker
+```
+Restart the Docker daemon:
+```bash
+sudo systemctl restart docker
+```
 
+
+### Install Docker Desktop on Ubuntu
+For non-Gnome Desktop environments, gnome-terminal must be installed:
+```bash
+sudo apt install gnome-terminal
+```
+Download latest [DEB package](https://docs.docker.com/desktop/install/ubuntu/).
+Install the package with apt as follows:
+```bash
+sudo apt-get update
+sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+```
 
 ## Basic
 Create new container
