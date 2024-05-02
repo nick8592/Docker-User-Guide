@@ -190,6 +190,7 @@ ImportError: libGL.so.1: cannot open shared object file: No such file or directo
 pip uninstall opencv-python
 pip install opencv-python-headless
 ```
+- ['docker images' vs 'sudo docker images' #79](https://github.com/docker/desktop-linux/issues/79)
 
 ## For MacOS
 [Docker command not found when running on Mac](https://stackoverflow.com/a/76097028).  
