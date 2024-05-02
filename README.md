@@ -16,6 +16,20 @@ Run the following command to uninstall all conflicting packages:
 ```bash
  for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
+```bash
+sudo apt-get purge docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin docker-desktop
+sudo apt-get autoremove --purge docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin docker-desktop
+sudo rm -rf /var/lib/docker /etc/docker
+sudo rm /etc/apparmor.d/docker
+sudo groupdel docker
+sudo rm -rf /var/run/docker.sock
+sudo rm -rf /var/lib/containerd
+```
+```bash
+sudo apt-get purge libnvidia-container-tools libnvidia-container1:amd64 libnvidia-container1:amd64 libnvidia-container1:amd64
+sudo apt-get autoremove --purge libnvidia-container-tools libnvidia-container1:amd64 libnvidia-container1:amd64 libnvidia-container1:amd64
+```
+
 Set up Docker's `apt` repository.
 ```bash
 # Add Docker's official GPG key:
