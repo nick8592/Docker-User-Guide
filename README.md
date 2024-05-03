@@ -212,6 +212,15 @@ pip install opencv-python-headless
 ```
 - ['docker images' vs 'sudo docker images' #79](https://github.com/docker/desktop-linux/issues/79)
 
+- [How to Fix the “Error load metadata for docker.io” when Building your Docker Image](https://medium.com/@matijazib/how-to-fix-the-error-load-metadata-for-docker-io-when-building-your-docker-image-on-macos-ec6deee664fd)
+```bash
+<error message>
+ERROR: failed to solve: nvidia/cuda:11.8.0-devel-ubuntu22.04: failed to resolve source metadata for docker.io/nvidia/cuda:11.8.0-devel-ubuntu22.04: error getting credentials - err: exec: "docker-credential-desktop": executable file not found in $PATH, out: ``
+<solution>
+rm ~/.docker/config.json
+sudo rm -rf ~/.docker/buildx
+```
+
 ## For MacOS
 [Docker command not found when running on Mac](https://stackoverflow.com/a/76097028).  
 Add your Docker binary path
