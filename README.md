@@ -55,6 +55,26 @@ Verify that the Docker Engine installation is successful by running the hello-wo
 sudo docker run hello-world
 ```
 
+### Manage Docker as a non-root user
+To create the docker group and add your user:
+Create the docker group.
+```bash
+sudo groupadd docker
+```
+Add your user to the docker group.
+```bash
+sudo usermod -aG docker $USER
+```
+Log out and log back in so that your group membership is re-evaluated.   
+You can also run the following command to activate the changes to groups:
+```bash
+newgrp docker
+```
+Verify that you can run docker commands without sudo.
+```bash
+docker run hello-world
+```
+
 ### Installing the NVIDIA Container Toolkit
 #### Installing with Apt
 Configure the production repository:
