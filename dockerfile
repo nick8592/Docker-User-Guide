@@ -1,38 +1,34 @@
-# FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+# Use the NVIDIA CUDA base image
 FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 
-# ENV PYTHONUNBUFFERED=1 
+# Set environment variables for NVIDIA drivers and CUDA
+ENV NVIDIA_DRIVER_VERSION=545
+ENV CUDA_VERSION=12.1.0
+ENV DEBIAN_FRONTEND=noninteractive
 
-# SYSTEM
-RUN apt-get update --yes --quiet && DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet --no-install-recommends \
+# Install nvidia driver (replace 545 with the specific version you need)
+RUN apt-get update
+RUN apt-get install --yes --quiet --no-install-recommends nvidia-driver-545
+RUN apt-get install --yes --quiet --no-install-recommends \
     software-properties-common \
     build-essential apt-utils \
-    wget curl vim git ca-certificates kmod \
-    nvidia-driver-545 \
-    && rm -rf /var/lib/apt/lists/*
+    wget curl vim git ca-certificates kmod 
+RUN rm -rf /var/lib/apt/lists/*
 
-# PYTHON 3.9
-RUN add-apt-repository --yes ppa:deadsnakes/ppa && apt-get update --yes --quiet
-RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet --no-install-recommends \
-    python3.9 \
-    python3.9-dev \
-    python3.9-distutils \
-    python3.9-lib2to3 \
-    python3.9-gdbm \
-    python3.9-tk \
-    pip
+# Install python 3.10 and pip
+RUN apt-get update
+RUN apt-get install -y python3.10 pip
 
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 999 \
-    && update-alternatives --config python3 && ln -s /usr/bin/python3 /usr/bin/python
+# Install Miniconda
+RUN mkdir -p ~/miniconda3
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+RUN bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+RUN ~/miniconda3/bin/conda init bash
 
-RUN pip install --upgrade pip
+# Set environment variables (optional, adjust as needed)
+ENV PATH="/opt/miniconda3/bin:$PATH"
+ENV PYTHONPATH="/opt/miniconda3/lib/python3.10/site-packages:$PYTHONPATH"
 
-# ANACONDA
-RUN wget -O /tmp/anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh \
-    && bash /tmp/anaconda.sh -b -p /anaconda \
-    && eval "$(/anaconda/bin/conda shell.bash hook)" \
-    && conda init \
-    && conda update -n base -c defaults conda \
-    && conda create --name env \
-    && conda activate env \
-    # && conda install -y pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch-nightly -c nvidia
+# Work directory
+WORKDIR /home
+
