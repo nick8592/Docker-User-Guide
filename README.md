@@ -167,7 +167,7 @@ Get into `<workspace_folder>`
 Build your own image.   
 Type in   
 ```bash
-docker build -t <workspace_folder> .
+docker build -t <custom_name> .
 ```
 Check new docker image created   
 ```bash
@@ -175,7 +175,7 @@ docker images
 ```
 Run your own image
 ```bash
-docker run <workspace_folder>
+docker run <custom_name>
 ```
 Push image
 ```bash
