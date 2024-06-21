@@ -167,7 +167,7 @@ Get into `<workspace_folder>`
 Build your own image.   
 Type in   
 ```bash
-docker build -t <custom_name> .
+docker build -t [custom_name] .
 ```
 Check new docker image created   
 ```bash
@@ -175,11 +175,15 @@ docker images
 ```
 Run your own image
 ```bash
-docker run <custom_name>
+docker run [custom_name]
 ```
 Push image
 ```bash
 docker tag docker/welcome-to-docker YOUR-USERNAME/welcome-to-docker
+```
+Remove image
+```bash
+docker rmi [image_id]
 ```
 
 ## Container connet to local folder
@@ -190,14 +194,14 @@ windows path conversion https://docs.docker.com/desktop/troubleshoot/topics/
 
 1. Use `-v`
 ```bash
-docker run -it --name <container_name> -v <local_folder>:<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
+docker run -it --name [container_name] -v [local_folder]:[container_folder] --gpus all -u 0 --shm-size 12G [image_id] bash
 (windows) docker run -it --name test111 -v C:\Users\user\Desktop\mmlab\code\test:/main --gpus all -u 0 --shm-size 12G test bash
 (linux/mac) docker run -it --name kmeans -v /User/weichenpai/Code/Kmeans-Clustering:/Kmeans 3f5ef9003cef bash
 ```
 
 2. Use `--mount`
 ```bash
-docker run -it --name <container_name> --mount type=bind,source=<local_folder>,target=<container_folder> --gpus all -u 0 --shm-size 12G <image_id> bash
+docker run -it --name [container_name] --mount type=bind,source=[local_folder],target=[container_folder] --gpus all -u 0 --shm-size 12G [image_id] bash
 (windows) docker run -it --name mount_test --mount type=bind,source=C:\Users\user\Desktop\mmlab\code\test,target=/main --gpus all -u 0 --shm-size 12G test bash
 ```
 
