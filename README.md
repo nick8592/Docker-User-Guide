@@ -55,6 +55,18 @@ Verify that the Docker Engine installation is successful by running the hello-wo
 sudo docker run hello-world
 ```
 
+### Install Docker Desktop on Ubuntu (Option)
+For non-Gnome Desktop environments, gnome-terminal must be installed:
+```bash
+sudo apt install gnome-terminal
+```
+Download latest [DEB package](https://docs.docker.com/desktop/install/ubuntu/).
+Install the package with apt as follows:
+```bash
+sudo apt-get update
+sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+```
+
 ### Manage Docker as a non-root user
 To create the docker group and add your user:
 Create the docker group.
@@ -101,18 +113,33 @@ Restart the Docker daemon:
 sudo systemctl restart docker
 ```
 
+### Using the NVIDIA Docker Image
 
-### Install Docker Desktop on Ubuntu
-For non-Gnome Desktop environments, gnome-terminal must be installed:
+To run GPU-accelerated applications in a containerized environment, NVIDIA provides Docker images pre-configured with CUDA and cuDNN libraries. These images are ideal for deep learning, scientific computing, and other GPU-intensive tasks.
+
+#### Step 1: Pull the NVIDIA CUDA Docker Image
+
+Use the `docker pull` command to download the desired image from NVIDIA's container registry. For example, the following command pulls a CUDA 12.4.1 image with cuDNN support based on Ubuntu 20.04:
+
 ```bash
-sudo apt install gnome-terminal
+docker pull nvidia/cuda:12.4.1-cudnn-devel-ubuntu20.04
 ```
-Download latest [DEB package](https://docs.docker.com/desktop/install/ubuntu/).
-Install the package with apt as follows:
+
+#### Step 2: Run the Container with GPU Access
+
+To launch the container with GPU support and access to your local `/home` directory, use:
+
 ```bash
-sudo apt-get update
-sudo apt-get install ./docker-desktop-<version>-<arch>.deb
+docker run -it --gpus all -v /home:/home nvidia/cuda:12.4.1-cudnn-devel-ubuntu20.04
 ```
+
+Here's a breakdown of the command:
+- `-it`: Runs the container in interactive mode with a terminal.
+- `--gpus all`: Grants the container access to all available GPUs.
+- `-v /home:/home`: Mounts the local `/home` directory inside the container so you can access your files.
+- `nvidia/cuda:12.4.1-cudnn-devel-ubuntu20.04`: Specifies the image to use.
+
+Once inside the container, you can start compiling and running GPU-accelerated code using CUDA and cuDNN.
 
 ## Basic
 Create new container
