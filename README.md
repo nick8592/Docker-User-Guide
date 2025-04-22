@@ -141,6 +141,29 @@ Here's a breakdown of the command:
 
 Once inside the container, you can start compiling and running GPU-accelerated code using CUDA and cuDNN.
 
+#### Step 3: Install Python 3 and pip
+
+The CUDA Docker image doesn't come with Python pre-installed by default, so you'll need to install it manually once you're inside the container.
+
+After running the container, execute the following commands:
+
+```bash
+apt update
+apt install -y python3 python3-pip
+```
+
+- `apt update`: Updates the package lists to get the latest versions.
+- `apt install -y python3 python3-pip`: Installs Python 3 and its package manager `pip`.
+
+You can verify the installation with:
+
+```bash
+python3 --version
+pip3 --version
+```
+
+Now you're ready to install Python packages and run your GPU-accelerated Python scripts using CUDA and cuDNN.
+
 ## Basic
 Create new container
 ```bash
