@@ -256,7 +256,7 @@ docker run -it --name [container_name] --mount type=bind,source=[local_folder],t
 ```
 
 ## Errors
-- [docker环境里安装opencv ImportError: libGL.so.1: cannot open shared object file: No such file or directory](https://blog.csdn.net/Max_ZhangJF/article/details/108920050)
+### [docker环境里安装opencv ImportError: libGL.so.1: cannot open shared object file: No such file or directory](https://blog.csdn.net/Max_ZhangJF/article/details/108920050)
 ```bash
 <error message>
 ImportError: libGL.so.1: cannot open shared object file: No such file or directory
@@ -264,9 +264,9 @@ ImportError: libGL.so.1: cannot open shared object file: No such file or directo
 pip uninstall opencv-python
 pip install opencv-python-headless
 ```
-- ['docker images' vs 'sudo docker images' #79](https://github.com/docker/desktop-linux/issues/79)
+### ['docker images' vs 'sudo docker images' #79](https://github.com/docker/desktop-linux/issues/79)
 
-- [How to Fix the “Error load metadata for docker.io” when Building your Docker Image](https://medium.com/@matijazib/how-to-fix-the-error-load-metadata-for-docker-io-when-building-your-docker-image-on-macos-ec6deee664fd)
+### [How to Fix the “Error load metadata for docker.io” when Building your Docker Image](https://medium.com/@matijazib/how-to-fix-the-error-load-metadata-for-docker-io-when-building-your-docker-image-on-macos-ec6deee664fd)
 ```bash
 <error message>
 ERROR: failed to solve: nvidia/cuda:11.8.0-devel-ubuntu22.04: failed to resolve source metadata for docker.io/nvidia/cuda:11.8.0-devel-ubuntu22.04: error getting credentials - err: exec: "docker-credential-desktop": executable file not found in $PATH, out: ``
@@ -274,6 +274,25 @@ ERROR: failed to solve: nvidia/cuda:11.8.0-devel-ubuntu22.04: failed to resolve 
 rm ~/.docker/config.json
 sudo rm -rf ~/.docker/buildx
 ```
+
+### ["Unable to Trash File: Permission Denied"](https://askubuntu.com/a/722941)
+
+This error usually occurs when you try to delete or move a file to the Trash but **you don’t own the file or folder**, or lack permission to modify it.
+
+#### Fix: Take Ownership Using `chown`
+
+You can fix this by changing the ownership of the file or directory to your current user:
+
+```bash
+sudo chown -R $USER:$USER /path/to/directory
+```
+
+#### What this does:
+- `sudo`: Runs the command with superuser privileges.
+- `chown`: Changes ownership.
+- `-R`: Applies the change **recursively** (to all files/folders inside).
+- `$USER:$USER`: Automatically fills in your **username** and **primary group**.
+- `/path/to/directory`: Replace this with the path to the file or folder you're trying to delete.
 
 ## For MacOS
 [Docker command not found when running on Mac](https://stackoverflow.com/a/76097028).  
