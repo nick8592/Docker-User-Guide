@@ -255,6 +255,69 @@ docker run -it --name [container_name] --mount type=bind,source=[local_folder],t
 (windows) docker run -it --name mount_test --mount type=bind,source=C:\Users\user\Desktop\mmlab\code\test,target=/main --gpus all -u 0 --shm-size 12G test bash
 ```
 
+## 🖼️ Viewing Images with `eog` in Docker
+
+To view images from inside a Docker container using the `eog` (Eye of GNOME) image viewer, follow the steps below. This method works on **Linux** systems with X11.
+
+---
+
+#### 📦 1. Run a Docker Container with X11 GUI Access
+
+On the **host system**, run:
+
+```bash
+# Allow Docker containers to access your X server
+xhost +local:root
+
+# Start a container with DISPLAY and X11 socket access
+docker run -it \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v $(pwd):/data \
+  ubuntu:20.04 bash
+````
+
+---
+
+#### 🧱 2. Inside the Container
+
+Install the image viewer:
+
+```bash
+apt update && apt install -y eog
+```
+
+Set the `DISPLAY` environment variable (optional if inherited correctly):
+
+```bash
+export DISPLAY=:0
+```
+
+> ⚠️ Use the same value as on your host (`echo $DISPLAY`).
+
+Open an image from the mounted host directory:
+
+```bash
+cd /data
+eog your_image.png
+```
+or 
+```bash
+# Download Lena image
+wget -O lena.png https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png
+
+# Open the image (if eog is installed and DISPLAY is set)
+eog lena.png
+```
+
+#### 🔒 3. Re-secure Your Host Display
+
+When you're done:
+
+```bash
+xhost -local:root
+```
+
 ## Errors
 ### [docker环境里安装opencv ImportError: libGL.so.1: cannot open shared object file: No such file or directory](https://blog.csdn.net/Max_ZhangJF/article/details/108920050)
 ```bash
